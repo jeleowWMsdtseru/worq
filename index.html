@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Join our 2-day hands-on AI Agentic Automation Training in Malaysia. Learn to automate workflows using n8n, OpenAI, and more. HRDC-claimable. Ideal for founders and non-technical leaders.">
+  <meta name="keywords" content="AI Automation Training Malaysia, n8n course, HRDC claimable AI course, AI for non-technical founders, agentic automation workshop">
+  <meta name="author" content="theLead.io">
+  <title>AI Agentic Automation Training | n8n Hands-on Course in Malaysia | HRDC Claimable</title>
+  
+  <!-- Favicons -->
+  <link rel="icon" href="https://thelead.io/wp-content/uploads/2020/04/cropped-lead-favicon-32x32.png" sizes="32x32" />
+  <link rel="icon" href="https://thelead.io/wp-content/uploads/2020/04/cropped-lead-favicon-192x192.png" sizes="192x192" />
+  <link rel="apple-touch-icon" href="https://thelead.io/wp-content/uploads/2020/04/cropped-lead-favicon-192x192.png" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    /* Custom styles to apply the Inter font */
+    body {
+      font-family: 'Inter', sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      background-color: #f9fafb; /* bg-gray-50 */
+    }
+    .card-hover {
+        transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    }
+    .card-hover:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    }
+    /* Style for the sticky nav to avoid content jump */
+    .sticky-nav-padding {
+        padding-top: 72px; /* Adjust this based on nav height */
+    }
+    /* Custom gradient for yellow accent */
+    .bg-gradient-yellow {
+        background-image: linear-gradient(to right, var(--tw-gradient-stops));
+        --tw-gradient-from: #f59e0b; /* amber-500 */
+        --tw-gradient-to: #facc15;   /* yellow-400 */
+        --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+    }
+    .header-bg {
+        background-image: linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.85)), url('http://googleusercontent.com/file_content/1');
+        background-size: cover;
+        background-position: center;
+    }
+    /* Accordion styles */
+    .accordion-content {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease-out;
+    }
+    .bg-custom-black {
+        background-color: #000000;
+    }
+    .bg-custom-black-nav {
+        background-color: rgb(0 0 0 / 0.8);
+    }
+  </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+  <nav id="navbar" class="bg-custom-black-nav backdrop-blur-md text-white fixed top-0 left-0 right-0 z-50 shadow-lg">
+    <div class="container mx-auto px-6">
+        <div class="flex justify-between items-center h-16">
+            <a href="https://www.thelead.io" target="_blank" rel="noopener noreferrer">
+              <img src="https://thelead.io/wp-content/uploads/2019/11/lead-white-logo.png" alt="theLead.io Logo" class="h-8 w-auto">
+            </a>
+
+            <div class="hidden md:flex items-center space-x-6">
+                <a href="#dates" class="hover:text-amber-300 transition-colors" data-i18n="nav_dates">Dates</a>
+                <a href="#syllabus" class="hover:text-amber-300 transition-colors" data-i18n="nav_syllabus">Syllabus</a>
+                <a href="#trainers" class="hover:text-amber-300 transition-colors" data-i18n="nav_trainers">Trainers</a>
+                <a href="#faq" class="hover:text-amber-300 transition-colors" data-i18n="nav_faq">FAQ</a>
+                
+                <!-- Language Toggle -->
+                <button onclick="toggleLanguage()" class="flex items-center space-x-1 hover:text-amber-300 transition-colors border border-gray-500 rounded px-2 py-1">
+                    <i data-lucide="globe" class="w-4 h-4"></i>
+                    <span id="lang-text">EN</span>
+                </button>
+
+                <a href="https://forms.gle/9NymCRwSQ7MYVT8Z6" target="_blank" rel="noopener noreferrer" class="bg-amber-500 hover:bg-amber-600 text-gray-900 px-4 py-2 rounded-md font-semibold transition-all" data-i18n="nav_register">Register Now</a>
+            </div>
+
+            <div class="md:hidden flex items-center space-x-4">
+                 <!-- Mobile Language Toggle -->
+                <button onclick="toggleLanguage()" class="flex items-center space-x-1 hover:text-amber-300 transition-colors border border-gray-500 rounded px-2 py-1">
+                    <span id="lang-text-mobile">EN</span>
+                </button>
+                <button id="mobile-menu-button" class="text-white focus:outline-none">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden bg-custom-black px-6 pb-4 space-y-2">
+        <a href="#dates" class="block hover:text-amber-300 transition-colors py-2" data-i18n="nav_dates">Dates</a>
+        <a href="#syllabus" class="block hover:text-amber-300 transition-colors py-2" data-i18n="nav_syllabus">Syllabus</a>
+        <a href="#trainers" class="block hover:text-amber-300 transition-colors py-2" data-i18n="nav_trainers">Trainers</a>
+        <a href="#faq" class="block hover:text-amber-300 transition-colors py-2" data-i18n="nav_faq">FAQ</a>
+        <a href="https://forms.gle/9NymCRwSQ7MYVT8Z6" target="_blank" rel="noopener noreferrer" class="block bg-amber-500 hover:bg-amber-600 text-gray-900 px-4 py-2 rounded-md font-semibold transition-all text-center mt-2" data-i18n="nav_register">Register Now</a>
+    </div>
+  </nav>
+
+  <header class="header-bg text-white pt-32 pb-20 md:pt-40 md:pb-28">
+    <div class="container mx-auto px-6 text-center relative z-10">
+      <div class="inline-block bg-amber-500 text-black font-bold text-xs px-3 py-1 rounded-full mb-4 uppercase tracking-wider" data-i18n="hero_partnership">
+        In Partnership with WORQ
+      </div>
+      <h1 class="text-4xl md:text-6xl font-black leading-tight mb-4" data-i18n="hero_title">
+        AI Agentic Automation Training
+      </h1>
+      <p class="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto mb-8" data-i18n="hero_subtitle">
+        Master AI-powered workflow automation using n8n, OpenAI, and no-code tools — in just 2 days. HRDC Claimable.
+      </p>
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a href="https://forms.gle/9NymCRwSQ7MYVT8Z6" target="_blank" rel="noopener noreferrer" class="inline-block w-full sm:w-auto bg-gradient-yellow text-gray-900 font-bold text-lg px-10 py-4 rounded-lg shadow-lg hover:shadow-xl transition-all transform hover:scale-105" data-i18n="hero_book">
+          Book Your Seat Now
+        </a>
+        <a href="https://drive.google.com/file/d/1aXpfRRTP65YmnUXz2G0NYl5Ub5WRDxHU/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="inline-block w-full sm:w-auto bg-transparent border-2 border-amber-400 text-amber-400 font-bold text-lg px-10 py-3 rounded-lg shadow-lg hover:bg-amber-400 hover:text-gray-900 transition-all transform hover:scale-105" data-i18n="hero_brochure">
+          Download Brochure
+        </a>
+      </div>
+    </div>
+  </header>
+  
+  <main class="bg-gray-50">
+    <div class="container mx-auto px-6 py-12 md:py-20">
+    
+      <section id="dates" class="mb-16">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-800" data-i18n="dates_title">Choose Your Workshop Date</h2>
+            <p class="text-gray-600 mt-2" data-i18n="dates_subtitle">Seats are filling up fast! Book now to secure your spot.</p>
+        </div>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            <!-- Date Card 1: Jan 15-16 -->
+            <div class="bg-white p-6 rounded-xl shadow-lg border-2 border-orange-400 transform hover:scale-105 transition-transform duration-300 relative overflow-hidden">
+                <div class="absolute top-0 right-0 bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded-bl-lg" data-i18n="card_english">English</div>
+                <div class="text-center">
+                    <p class="text-lg font-semibold text-gray-500" data-i18n="date_jan_15">January 15-16, 2026</p>
+                    <p class="font-bold text-2xl text-gray-800 mb-4" data-i18n="day_thu_fri">Thursday & Friday</p>
+                    
+                    <!-- Progress Bar -->
+                    <div class="w-full bg-gray-200 rounded-full h-4 mb-2">
+                        <div class="bg-orange-500 h-4 rounded-full" style="width: 50%"></div>
+                    </div>
+                    <div class="flex justify-between items-center text-sm mb-4">
+                        <p class="font-bold text-orange-600"><span data-i18n="sold_50">50% Sold Out</span></p>
+                         <p class="text-gray-500" data-i18n="filling_fast">Filling fast!</p>
+                    </div>
+
+                    <a href="https://forms.gle/9NymCRwSQ7MYVT8Z6" target="_blank" rel="noopener noreferrer" class="inline-block w-full bg-amber-500 hover:bg-amber-600 text-gray-900 font-bold py-3 px-6 rounded-lg shadow-md transition-all" data-i18n="card_book_now">
+                        Book Now
+                    </a>
+                </div>
+            </div>
+
+            <!-- Date Card: Jan 17-18 (Mandarin) -->
+            <div class="bg-white p-6 rounded-xl shadow-lg border-2 border-red-400 transform hover:scale-105 transition-transform duration-300 relative overflow-hidden">
+                <div class="absolute top-0 right-0 bg-red-500 text-white text-xs font-bold px-3 py-1 rounded-bl-lg" data-i18n="card_mandarin">Mandarin</div>
+                <div class="text-center">
+                    <p class="text-lg font-semibold text-gray-500" data-i18n="date_jan_17">January 17-18, 2026</p>
+                    <p class="font-bold text-2xl text-gray-800 mb-4" data-i18n="day_sat_sun">Saturday & Sunday</p>
+                    
+                    <!-- Progress Bar -->
+                    <div class="w-full bg-gray-200 rounded-full h-4 mb-2">
+                        <div class="bg-green-500 h-4 rounded-full" style="width: 30%"></div>
+                    </div>
+                    <div class="flex justify-between items-center text-sm mb-4">
+                        <p class="font-bold text-green-600"><span data-i18n="sold_30">30% Sold Out</span></p>
+                         <p class="text-gray-500" data-i18n="weekend_class">Weekend Class</p>
+                    </div>
+
+                    <a href="https://forms.gle/9NymCRwSQ7MYVT8Z6" target="_blank" rel="noopener noreferrer" class="inline-block w-full bg-amber-500 hover:bg-amber-600 text-gray-900 font-bold py-3 px-6 rounded-lg shadow-md transition-all" data-i18n="card_book_now">
+                        Book Now
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Date Card 2: Jan 22-23 -->
+            <div class="bg-white p-6 rounded-xl shadow-lg border border-gray-200 transform hover:scale-105 transition-transform duration-300 relative overflow-hidden">
+                <div class="absolute top-0 right-0 bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded-bl-lg" data-i18n="card_english">English</div>
+                <div class="text-center">
+                    <p class="text-lg font-semibold text-gray-500" data-i18n="date_jan_22">January 22-23, 2026</p>
+                    <p class="font-bold text-2xl text-gray-800 mb-4" data-i18n="day_thu_fri">Thursday & Friday</p>
+                    
+                    <!-- Progress Bar -->
+                    <div class="w-full bg-gray-200 rounded-full h-4 mb-2">
+                        <div class="bg-green-500 h-4 rounded-full" style="width: 30%"></div>
+                    </div>
+                    <div class="flex justify-between items-center text-sm mb-4">
+                        <p class="font-bold text-green-600"><span data-i18n="sold_30">30% Sold Out</span></p>
+                         <p class="text-gray-500" data-i18n="new_date">New Date Added!</p>
+                    </div>
+
+                    <a href="https://forms.gle/9NymCRwSQ7MYVT8Z6" target="_blank" rel="noopener noreferrer" class="inline-block w-full bg-amber-500 hover:bg-amber-600 text-gray-900 font-bold py-3 px-6 rounded-lg shadow-md transition-all" data-i18n="card_book_now">
+                        Book Now
+                    </a>
+                </div>
+            </div>
+
+            <!-- Date Card 3: Feb 5-6 -->
+            <div class="bg-white p-6 rounded-xl shadow-lg border border-gray-200 transform hover:scale-105 transition-transform duration-300 relative overflow-hidden">
+                <div class="absolute top-0 right-0 bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded-bl-lg" data-i18n="card_english">English</div>
+                <div class="text-center">
+                    <p class="text-lg font-semibold text-gray-500" data-i18n="date_feb_5">February 5-6, 2026</p>
+                    <p class="font-bold text-2xl text-gray-800 mb-4" data-i18n="day_thu_fri">Thursday & Friday</p>
+                    
+                    <!-- Progress Bar -->
+                    <div class="w-full bg-gray-200 rounded-full h-4 mb-2">
+                        <div class="bg-green-500 h-4 rounded-full" style="width: 10%"></div>
+                    </div>
+                    <div class="flex justify-between items-center text-sm mb-4">
+                        <p class="font-bold text-green-600"><span data-i18n="sold_10">10% Sold Out</span></p>
+                         <p class="text-gray-500" data-i18n="new_date">New Date Added!</p>
+                    </div>
+
+                    <a href="https://forms.gle/9NymCRwSQ7MYVT8Z6" target="_blank" rel="noopener noreferrer" class="inline-block w-full bg-amber-500 hover:bg-amber-600 text-gray-900 font-bold py-3 px-6 rounded-lg shadow-md transition-all" data-i18n="card_book_now">
+                        Book Now
+                    </a>
+                </div>
+            </div>
+        </div>
+      </section>
+
+      <section id="trusted-by" class="bg-gray-100 -mx-6 px-6 py-12 mb-16 text-center">
+        <h3 class="text-gray-600 text-sm font-bold uppercase tracking-wider mb-8" data-i18n="trusted_by">Trusted by industry leaders</h3>
+        <div class="flex justify-center">
+            <img src="https://raw.githubusercontent.com/drhanlau/n8n-course/main/Corporate%20clients.png" alt="Corporate Client Logos" class="max-w-4xl w-full h-auto">
+        </div>
+      </section>
+
+      <section id="other-details" class="mb-16">
+        <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            <div class="bg-white p-6 rounded-xl shadow-lg border border-gray-200 flex items-center gap-4">
+                <i data-lucide="map-pin" class="w-12 h-12 text-amber-500 flex-shrink-0"></i>
+                <div>
+                    <h3 class="text-xl font-semibold mb-1" data-i18n="loc_title">Location & Format</h3>
+                    <p class="text-gray-600">WORQ, Kuala Lumpur</p>
+                    <p class="text-gray-500 text-sm" data-i18n="loc_format">(Hands-on Physical Training)</p>
+                    <p class="font-semibold text-amber-600 mt-1" data-i18n="loc_ratio">10:1 Trainee-Facilitator Ratio</p>
+                </div>
+            </div>
+            <div class="bg-white p-6 rounded-xl shadow-lg border border-gray-200 flex items-center gap-4">
+                <i data-lucide="life-buoy" class="w-12 h-12 text-amber-500 flex-shrink-0"></i>
+                <div>
+                    <h3 class="text-xl font-semibold mb-1" data-i18n="support_title">Post-Training Support</h3>
+                    <p class="text-gray-600" data-i18n="support_desc">3 months of dedicated support to help embed AI adoption across your team.</p>
+                </div>
+            </div>
+        </div>
+      </section>
+
+      <div class="grid lg:grid-cols-3 gap-12">
+        <div class="lg:col-span-2 space-y-12">
+
+          <section id="who-should-attend" class="bg-white p-8 rounded-xl shadow-lg border border-gray-200 card-hover">
+             <div class="grid md:grid-cols-2 gap-8 items-center">
+                <div>
+                    <h2 class="text-2xl font-bold mb-6 flex items-center"><i data-lucide="users" class="w-7 h-7 mr-3 text-amber-500"></i><span data-i18n="who_title">Who Should Attend</span></h2>
+                    <p class="mb-4 text-gray-600" data-i18n="who_desc">This course is tailored for non-technical professionals, including:</p>
+                    <ul class="space-y-3">
+                      <li class="flex items-start"><i data-lucide="check-circle-2" class="w-5 h-5 mr-3 text-green-500 mt-1 flex-shrink-0"></i><span data-i18n="who_list_1"><strong>Founders, C-suite leaders,</strong> and decision-makers.</span></li>
+                      <li class="flex items-start"><i data-lucide="check-circle-2" class="w-5 h-5 mr-3 text-green-500 mt-1 flex-shrink-0"></i><span data-i18n="who_list_2"><strong>Managers</strong> from HR, Marketing, Finance, Ops, and Customer Care.</span></li>
+                      <li class="flex items-start"><i data-lucide="check-circle-2" class="w-5 h-5 mr-3 text-green-500 mt-1 flex-shrink-0"></i><span data-i18n="who_list_3"><strong>Consultants and professionals</strong> leading digital initiatives.</span></li>
+                    </ul>
+                </div>
+                <div class="hidden md:block">
+                    <img src="https://thelead.io/wp-content/uploads/2020/07/Web-development-illustration-1march-july-06.png" alt="Web Development Illustration" class="rounded-lg">
+                </div>
+             </div>
+          </section>
+
+          <section id="syllabus" class="bg-white p-8 rounded-xl shadow-lg border border-gray-200 card-hover">
+              <h2 class="text-2xl font-bold mb-6 flex items-center"><i data-lucide="book-open-check" class="w-7 h-7 mr-3 text-amber-500"></i><span data-i18n="syllabus_title">Syllabus Overview</span></h2>
+              <div class="space-y-6">
+                  <div class="bg-amber-50 border-l-4 border-amber-500 p-6 rounded-r-lg">
+                      <h3 class="font-bold text-lg text-amber-800 mb-2" data-i18n="day1_title">Day 1: Foundations & No-Code Automation</h3>
+                      <ul class="list-disc list-inside text-gray-700 space-y-2">
+                          <li data-i18n="day1_item1"><strong>Fundamentals of AI Agents:</strong> Dive into core concepts like Large Language Models (LLMs), memory, and tools.</li>
+                          <li data-i18n="day1_item2"><strong>Automation Strategy:</strong> Understand risk-benefit tradeoffs and identify high-impact opportunities in your business.</li>
+                          <li data-i18n="day1_item3"><strong>Effective Prompting Techniques:</strong> Learn how to craft prompts that get you the precise results you need from AI.</li>
+                          <li data-i18n="day1_item4"><strong>Hands-on with n8n:</strong> Build your first automated workflow and a functional chatbot from the ground up.</li>
+                      </ul>
+                  </div>
+                  <div class="bg-green-50 border-l-4 border-green-500 p-6 rounded-r-lg">
+                      <h3 class="font-bold text-lg text-green-800 mb-2" data-i18n="day2_title">Day 2: Deployment & Scaling</h3>
+                      <ul class="list-disc list-inside text-gray-700 space-y-2">
+                          <li data-i18n="day2_item1"><strong>Security:</strong> Understand how to run locally if needed for enhanced privacy and control.</li>
+                          <li data-i18n="day2_item2"><strong>Building Smart Internal Tools:</strong> Use Retrieval-Augmented Generation (RAG) to create intelligent internal bots.</li>
+                          <li data-i18n="day2_item3"><strong>Real-World Deployment:</strong> Implement six different production-ready automations for common business tasks.</li>
+                          <li data-i18n="day2_item4"><strong>Group Exercise:</strong> Design and build your own DIY workflows using our expert-provided templates.</li>
+                      </ul>
+                  </div>
+              </div>
+          </section>
+          
+          <section id="trainers" class="bg-white p-8 rounded-xl shadow-lg border border-gray-200 card-hover">
+              <h2 class="text-2xl font-bold mb-6 flex items-center"><i data-lucide="graduation-cap" class="w-7 h-7 mr-3 text-amber-500"></i><span data-i18n="trainers_title">Your Expert Trainers</span></h2>
+              <div class="space-y-8">
+                  <div class="flex flex-col sm:flex-row items-center space-y-4 sm:space-y-0 sm:space-x-6">
+                      <img src="https://pbs.twimg.com/profile_images/738570826291646464/EEH1StZS_400x400.jpg" alt="Dr. Lau Cher Han" class="rounded-full w-24 h-24 border-4 border-gray-200 object-cover flex-shrink-0">
+                      <div>
+                          <h3 class="font-semibold text-xl text-center sm:text-left text-gray-800" data-i18n="trainer1_name">Dr. Lau Cher Han</h3>
+                          <p class="text-gray-600 text-center sm:text-left" data-i18n="trainer1_desc">Chief Data Scientist, national AI advisor, and expert trainer in data science and automation.</p>
+                      </div>
+                  </div>
+                  <div class="flex flex-col sm:flex-row items-center space-y-4 sm:space-y-0 sm:space-x-6">
+                      <img src="https://www.kosmo.com.my/wp-content/uploads/2025/03/Warren_Leow.jpg123-1024x768.jpg" alt="Warren Leow" class="rounded-full w-24 h-24 border-4 border-gray-200 object-cover flex-shrink-0">
+                      <div>
+                          <h3 class="font-semibold text-xl text-center sm:text-left text-gray-800" data-i18n="trainer2_name">Warren Leow</h3>
+                          <p class="text-gray-600 text-center sm:text-left" data-i18n="trainer2_desc">Founder of Supern8n, Co-founder of KAIN, and advisor to MED4IRN, with deep experience in scaling AI across industries.</p>
+                      </div>
+                  </div>
+                  <div class="flex flex-col sm:flex-row items-center space-y-4 sm:space-y-0 sm:space-x-6">
+                      <img src="https://thelead.io/wp-content/uploads/2020/08/edmund-crop.png" alt="Edmund Hee" class="rounded-full w-24 h-24 border-4 border-gray-200 object-cover flex-shrink-0">
+                      <div>
+                          <h3 class="font-semibold text-xl text-center sm:text-left text-gray-800" data-i18n="trainer3_name">Edmund Hee</h3>
+                          <p class="text-gray-600 text-center sm:text-left" data-i18n="trainer3_desc">CTO at Accio Technologies. Ex AI Officer at CIMB and Data Scientist at AirAsia</p>
+                      </div>
+                  </div>
+              </div>
+          </section>
+
+          <section id="testimonials" class="bg-white p-8 rounded-xl shadow-lg border border-gray-200 card-hover relative">
+            <i data-lucide="quote" class="absolute top-4 right-4 w-16 h-16 text-gray-100"></i>
+            <h2 class="text-2xl font-bold mb-6 flex items-center" data-i18n="testimonials_title">What Others Are Saying</h2>
+            <div class="space-y-6">
+              <blockquote class="bg-gray-100 p-6 rounded-lg border-l-4 border-gray-300">
+                <p class="text-gray-600 italic mb-3" data-i18n="testimonial1">"Our HR and marketing teams automated a few workflows within a week of training."</p>
+                <cite class="font-semibold text-gray-700 not-italic">– Liyana A., Head of People</cite>
+              </blockquote>
+              <blockquote class="bg-gray-100 p-6 rounded-lg border-l-4 border-gray-300">
+                <p class="text-gray-600 italic mb-3" data-i18n="testimonial2">"Clear, hands-on, and practical. We deployed real use cases in our company immediately."</p>
+                <cite class="font-semibold text-gray-700 not-italic">– Marcus K., CEO</cite>
+              </blockquote>
+              <blockquote class="bg-gray-100 p-6 rounded-lg border-l-4 border-gray-300">
+                <p class="text-gray-600 italic mb-3" data-i18n="testimonial3">"The 3-month support post-course was a lifesaver for our automation rollout."</p>
+                <cite class="font-semibold text-gray-700 not-italic">– Meera Y., Operations Director</cite>
+              </blockquote>
+            </div>
+          </section>
+          
+          <section id="certification" class="bg-white p-8 rounded-xl shadow-lg border border-gray-200 card-hover">
+            <h2 class="text-2xl font-bold mb-6 text-center md:text-left" data-i18n="cert_title">Our Certification</h2>
+            <div class="grid md:grid-cols-2 gap-8 items-center">
+                <div class="order-2 md:order-1">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-3" data-i18n="cert_subtitle">Backed by a Decade of Excellence</h3>
+                    <p class="text-gray-600 mb-4" data-i18n="cert_desc">
+                        Our certification is more than just a piece of paper; it's a testament to a legacy of quality training that spans over 10 years. We have a proven track record of empowering professionals and organizations with cutting-edge skills.
+                    </p>
+                    <ul class="space-y-2 text-gray-600 list-disc list-inside">
+                        <li data-i18n="cert_list1"><strong>Industry-Recognized:</strong> Validated by a decade of successful training programs.</li>
+                        <li data-i18n="cert_list2"><strong>Trusted by Leaders:</strong> Our long history has earned the trust of top corporations and government agencies.</li>
+                        <li data-i18n="cert_list3"><strong>Commitment to Quality:</strong> 10 years of refining our curriculum to meet the highest standards.</li>
+                    </ul>
+                </div>
+                <div class="order-1 md:order-2">
+                    <div style="position: relative; width: 100%; height: 0; padding-top: 56.2500%; padding-bottom: 0; box-shadow: 0 2px 8px 0 rgba(63,69,81,0.16); overflow: hidden; border-radius: 8px; will-change: transform; background-color: #f9fafb;">
+                      <img loading="lazy" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; object-fit: contain; border: none; padding: 0;margin: 0;"
+                        src="https://github.com/drhanlau/n8n-course/blob/main/Certificate.png?raw=true" alt="Workshop Certificate">
+                    </div>
+                </div>
+            </div>
+          </section>
+
+        </div>
+
+        <aside class="lg:col-span-1 space-y-8 lg:sticky lg:top-24 self-start">
+          <div class="bg-white p-6 rounded-xl shadow-lg border border-gray-200 card-hover">
+              <h3 class="text-xl font-bold mb-4 flex items-center"><i data-lucide="rocket" class="w-6 h-6 mr-3 text-amber-500"></i><span data-i18n="outcomes_title">Learning Outcomes</span></h3>
+              <ul class="space-y-3 text-gray-600">
+                  <li class="flex items-start"><i data-lucide="check" class="w-5 h-5 mr-2 text-amber-500 mt-1 flex-shrink-0"></i><span data-i18n="outcome1">Design and deploy automated workflows with n8n.</span></li>
+                  <li class="flex items-start"><i data-lucide="check" class="w-5 h-5 mr-2 text-amber-500 mt-1 flex-shrink-0"></i><span data-i18n="outcome2">Use AI tools like OpenAI and LMStudio.</span></li>
+                  <li class="flex items-start"><i data-lucide="check" class="w-5 h-5 mr-2 text-amber-500 mt-1 flex-shrink-0"></i><span data-i18n="outcome3">Build internal AI agents using RAG.</span></li>
+                  <li class="flex items-start"><i data-lucide="check" class="w-5 h-5 mr-2 text-amber-500 mt-1 flex-shrink-0"></i><span data-i18n="outcome4">Automate onboarding, approvals, content creation.</span></li>
+                  <li class="flex items-start"><i data-lucide="check" class="w-5 h-5 mr-2 text-amber-500 mt-1 flex-shrink-0"></i><span data-i18n="outcome5">Understand AI budgeting, scalability, and planning.</span></li>
+              </ul>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl shadow-lg border border-gray-200 card-hover">
+              <h3 class="text-xl font-bold mb-4 flex items-center"><i data-lucide="building-2" class="w-6 h-6 mr-3 text-amber-500"></i><span data-i18n="benefits_title">Benefits to Your Organization</span></h3>
+              <ul class="space-y-3 text-gray-600">
+                  <li class="flex items-start"><i data-lucide="check" class="w-5 h-5 mr-2 text-amber-500 mt-1 flex-shrink-0"></i><span data-i18n="benefit1">Boost team productivity and efficiency.</span></li>
+                  <li class="flex items-start"><i data-lucide="check" class="w-5 h-5 mr-2 text-amber-500 mt-1 flex-shrink-0"></i><span data-i18n="benefit2">Reduce reliance on IT teams with no-code tools.</span></li>
+                  <li class="flex items-start"><i data-lucide="check" class="w-5 h-5 mr-2 text-amber-500 mt-1 flex-shrink-0"></i><span data-i18n="benefit3">Speed up customer and internal processes.</span></li>
+                  <li class="flex items-start"><i data-lucide="check" class="w-5 h-5 mr-2 text-amber-500 mt-1 flex-shrink-0"></i><span data-i18n="benefit4">Unify your systems and improve data flow.</span></li>
+                  <li class="flex items-start"><i data-lucide="check" class="w-5 h-5 mr-2 text-amber-500 mt-1 flex-shrink-0"></i><span data-i18n="benefit5">Drive real digital transformation.</span></li>
+              </ul>
+          </div>
+        </aside>
+      </div>
+
+      <section id="video-testimonials" class="mt-20">
+        <h2 class="text-3xl font-bold text-center text-gray-800 mb-10" data-i18n="hear_from_participants">Hear From Our Participants</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
+            <!-- Embedded Facebook Video 1 -->
+            <div class="aspect-[9/16] bg-black rounded-xl shadow-lg flex items-center justify-center card-hover overflow-hidden">
+                <iframe src="https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F739734685168860%2F&show_text=false&width=267&t=0" class="w-full h-full" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowFullScreen="true"></iframe>
+            </div>
+            <!-- Embedded Facebook Video 2 -->
+            <div class="aspect-[9/16] bg-black rounded-xl shadow-lg flex items-center justify-center card-hover overflow-hidden">
+                <iframe src="https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Fthelead.io%2Fvideos%2F1118334936777034%2F&show_text=false&width=267&t=0" class="w-full h-full" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowFullScreen="true"></iframe>
+            </div>
+            <!-- Embedded Facebook Video 3 -->
+            <div class="aspect-[9/16] bg-black rounded-xl shadow-lg flex items-center justify-center card-hover overflow-hidden">
+                <iframe src="https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1250093550465260%2F&show_text=false&width=267&t=0" class="w-full h-full" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowFullScreen="true"></iframe>
+            </div>
+        </div>
+      </section>
+
+      <section id="gallery" class="mt-20">
+        <h2 class="text-3xl font-bold text-center text-gray-800 mb-10" data-i18n="glimpses">Glimpses from Our Workshops</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="overflow-hidden rounded-xl shadow-lg card-hover">
+                <img src="https://github.com/drhanlau/n8n-course/blob/main/501008480_1271616571636352_1045940269974980193_n.jpg?raw=true" alt="Past workshop photo 1" class="w-full h-full object-cover">
+            </div>
+            <div class="overflow-hidden rounded-xl shadow-lg card-hover">
+                <img src="https://github.com/drhanlau/n8n-course/blob/main/516791714_1309874321143910_2384036856029643188_n.jpg?raw=true" alt="Past workshop photo 2" class="w-full h-full object-cover">
+            </div>
+            <div class="overflow-hidden rounded-xl shadow-lg card-hover">
+                <img src="https://raw.githubusercontent.com/drhanlau/n8n-course/refs/heads/main/photo-1552664730-d307ca884978.avif" alt="Past workshop photo 3" class="w-full h-full object-cover">
+            </div>
+        </div>
+      </section>
+
+      <section id="faq" class="mt-20">
+        <div class="bg-white p-8 rounded-xl shadow-lg border border-gray-200 card-hover">
+          <h2 class="text-3xl font-bold text-center text-gray-800 mb-10" data-i18n="faq_main_title">Frequently Asked Questions</h2>
+          <div class="max-w-3xl mx-auto space-y-4" id="faq-accordion">
+
+            <h3 class="text-xl font-bold text-gray-700 pt-6 pb-2 border-b border-gray-300" data-i18n="faq_cat1">Track Record & Recognition</h3>
+            
+            <div class="border-b border-gray-200 py-4">
+              <button class="accordion-header w-full flex justify-between items-center text-left text-lg font-semibold text-gray-800 hover:text-amber-600 focus:outline-none">
+                <span data-i18n="faq_q1">What's your training track record?</span>
+                <i data-lucide="chevron-down" class="w-5 h-5 transition-transform transform"></i>
+              </button>
+              <div class="accordion-content mt-2 text-gray-600">
+                <p class="mb-2" data-i18n="faq_a1">Our achievements speak for themselves: 10,000+ professionals trained, major corporate clients including Standard Chartered, Intel, and Shell.</p>
+              </div>
+            </div>
+
+            <div class="border-b border-gray-200 py-4">
+              <button class="accordion-header w-full flex justify-between items-center text-left text-lg font-semibold text-gray-800 hover:text-amber-600 focus:outline-none">
+                <span data-i18n="faq_q2">What industry recognition do your trainers have?</span>
+                <i data-lucide="chevron-down" class="w-5 h-5 transition-transform transform"></i>
+              </button>
+              <div class="accordion-content mt-2 text-gray-600">
+                <p class="mb-2" data-i18n="faq_a2">Our trainers are recognized industry leaders with government advisory positions, university partnerships, and media appearances as AI experts.</p>
+              </div>
+            </div>
+
+            <h3 class="text-xl font-bold text-gray-700 pt-6 pb-2 border-b border-gray-300" data-i18n="faq_cat2">Prerequisites & Eligibility</h3>
+
+            <div class="border-b border-gray-200 py-4">
+              <button class="accordion-header w-full flex justify-between items-center text-left text-lg font-semibold text-gray-800 hover:text-amber-600 focus:outline-none">
+                <span data-i18n="faq_q3">Do I need any coding experience?</span>
+                <i data-lucide="chevron-down" class="w-5 h-5 transition-transform transform"></i>
+              </button>
+              <div class="accordion-content mt-2 text-gray-600">
+                <p data-i18n="faq_a3">No programming experience is required for most courses, as they are specifically designed for non-coders.</p>
+              </div>
+            </div>
+
+            <h3 class="text-xl font-bold text-gray-700 pt-6 pb-2 border-b border-gray-300" data-i18n="faq_cat3">Registration & Logistics</h3>
+
+            <div class="border-b border-gray-200 py-4">
+              <button class="accordion-header w-full flex justify-between items-center text-left text-lg font-semibold text-gray-800 hover:text-amber-600 focus:outline-none">
+                <span data-i18n="faq_q4">How do I register?</span>
+                <i data-lucide="chevron-down" class="w-5 h-5 transition-transform transform"></i>
+              </button>
+              <div class="accordion-content mt-2 text-gray-600">
+                <p class="mb-2" data-i18n="faq_a4">Simply message us on WhatsApp, and we'll send you a registration form.</p>
+              </div>
+            </div>
+
+            <div class="border-b border-gray-200 py-4">
+              <button class="accordion-header w-full flex justify-between items-center text-left text-lg font-semibold text-gray-800 hover:text-amber-600 focus:outline-none">
+                <span data-i18n="faq_q5">Is this course HRDC claimable?</span>
+                <i data-lucide="chevron-down" class="w-5 h-5 transition-transform transform"></i>
+              </button>
+              <div class="accordion-content mt-2 text-gray-600">
+                <p data-i18n="faq_a5">Yes, this course is 100% HRDC claimable under the SBL-KHAS scheme.</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <section id="register" class="mt-20 text-center bg-custom-black text-white rounded-xl p-10 md:p-16 shadow-2xl bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]">
+        <div class="relative z-10">
+          <h2 class="text-4xl font-extrabold mb-4" data-i18n="register_cta_title">Register Now & Transform Your Business</h2>
+          <p class="text-lg text-gray-300 mb-2" data-i18n="price_hrdc">RM3,500 HRDC (+SST) / RM3,200 non-HRDC (+ SST)</p>
+          <p class="text-gray-400 mb-8" data-i18n="price_includes">Includes training, certification, and 3 months of support.</p>
+          <a href="https://forms.gle/9NymCRwSQ7MYVT8Z6" target="_blank" rel="noopener noreferrer" class="inline-block bg-gradient-yellow text-gray-900 font-bold text-lg px-10 py-4 rounded-lg shadow-lg hover:shadow-xl transition-all transform hover:scale-105" data-i18n="hero_book">
+            Book Your Seat Now
+          </a>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <footer class="bg-custom-black text-gray-200">
+    <div class="container mx-auto px-6 py-8 text-center">
+      <p class="mb-4">Organized by <strong>theLead.io</strong></p>
+      <p>For inquiries: <a href="mailto:chelsea@thelead.io" class="text-amber-300 hover:text-amber-200">chelsea@thelead.io</a></p>
+    </div>
+  </footer>
+
+  <!-- Floating WhatsApp Button -->
+  <a href="https://wa.me/60174508388" target="_blank" rel="noopener noreferrer" class="fixed bottom-6 right-6 bg-green-500 text-white w-16 h-16 rounded-full flex items-center justify-center shadow-lg hover:bg-green-600 transition-all transform hover:scale-110 z-50">
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.487 5.235 3.487 8.413C23.998 18.667 18.664 24 .057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.626.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/></svg>
+  </a>
+
+  <script>
+    // Translation Data
+    const translations = {
+        en: {
+            nav_dates: "Dates",
+            nav_syllabus: "Syllabus",
+            nav_trainers: "Trainers",
+            nav_faq: "FAQ",
+            nav_register: "Register Now",
+            hero_partnership: "In Partnership with WORQ",
+            hero_title: "AI Agentic Automation Training",
+            hero_subtitle: "Master AI-powered workflow automation using n8n, OpenAI, and no-code tools — in just 2 days. HRDC Claimable.",
+            hero_book: "Book Your Seat Now",
+            hero_brochure: "Download Brochure",
+            dates_title: "Choose Your Workshop Date",
+            dates_subtitle: "Seats are filling up fast! Book now to secure your spot.",
+            card_english: "English",
+            card_mandarin: "Mandarin",
+            card_book_now: "Book Now",
+            date_jan_15: "January 15-16, 2026",
+            day_thu_fri: "Thursday & Friday",
+            sold_50: "50% Sold Out",
+            filling_fast: "Filling fast!",
+            date_jan_17: "January 17-18, 2026",
+            day_sat_sun: "Saturday & Sunday",
+            sold_30: "30% Sold Out",
+            weekend_class: "Weekend Class",
+            date_jan_22: "January 22-23, 2026",
+            new_date: "New Date Added!",
+            date_feb_5: "February 5-6, 2026",
+            sold_10: "10% Sold Out",
+            trusted_by: "Trusted by industry leaders",
+            loc_title: "Location & Format",
+            loc_format: "(Hands-on Physical Training)",
+            loc_ratio: "10:1 Trainee-Facilitator Ratio",
+            support_title: "Post-Training Support",
+            support_desc: "3 months of dedicated support to help embed AI adoption across your team.",
+            who_title: "Who Should Attend",
+            who_desc: "This course is tailored for non-technical professionals, including:",
+            who_list_1: "<strong>Founders, C-suite leaders,</strong> and decision-makers.",
+            who_list_2: "<strong>Managers</strong> from HR, Marketing, Finance, Ops, and Customer Care.",
+            who_list_3: "<strong>Consultants and professionals</strong> leading digital initiatives.",
+            syllabus_title: "Syllabus Overview",
+            day1_title: "Day 1: Foundations & No-Code Automation",
+            day1_item1: "<strong>Fundamentals of AI Agents:</strong> Dive into core concepts like Large Language Models (LLMs), memory, and tools.",
+            day1_item2: "<strong>Automation Strategy:</strong> Understand risk-benefit tradeoffs and identify high-impact opportunities in your business.",
+            day1_item3: "<strong>Effective Prompting Techniques:</strong> Learn how to craft prompts that get you the precise results you need from AI.",
+            day1_item4: "<strong>Hands-on with n8n:</strong> Build your first automated workflow and a functional chatbot from the ground up.",
+            day2_title: "Day 2: Deployment & Scaling",
+            day2_item1: "<strong>Security:</strong> Understand how to run locally if needed for enhanced privacy and control.",
+            day2_item2: "<strong>Building Smart Internal Tools:</strong> Use Retrieval-Augmented Generation (RAG) to create intelligent internal bots.",
+            day2_item3: "<strong>Real-World Deployment:</strong> Implement six different production-ready automations for common business tasks.",
+            day2_item4: "<strong>Group Exercise:</strong> Design and build your own DIY workflows using our expert-provided templates.",
+            trainers_title: "Your Expert Trainers",
+            trainer1_name: "Dr. Lau Cher Han",
+            trainer1_desc: "Chief Data Scientist, national AI advisor, and expert trainer in data science and automation.",
+            trainer2_name: "Warren Leow",
+            trainer2_desc: "Founder of Supern8n, Co-founder of KAIN, and advisor to MED4IRN, with deep experience in scaling AI across industries.",
+            trainer3_name: "Edmund Hee",
+            trainer3_desc: "CTO at Accio Technologies. Ex AI Officer at CIMB and Data Scientist at AirAsia",
+            testimonials_title: "What Others Are Saying",
+            testimonial1: "\"Our HR and marketing teams automated a few workflows within a week of training.\"",
+            testimonial2: "\"Clear, hands-on, and practical. We deployed real use cases in our company immediately.\"",
+            testimonial3: "\"The 3-month support post-course was a lifesaver for our automation rollout.\"",
+            cert_title: "Our Certification",
+            cert_subtitle: "Backed by a Decade of Excellence",
+            cert_desc: "Our certification is more than just a piece of paper; it's a testament to a legacy of quality training that spans over 10 years.",
+            cert_list1: "<strong>Industry-Recognized:</strong> Validated by a decade of successful training programs.",
+            cert_list2: "<strong>Trusted by Leaders:</strong> Our long history has earned the trust of top corporations and government agencies.",
+            cert_list3: "<strong>Commitment to Quality:</strong> 10 years of refining our curriculum to meet the highest standards.",
+            outcomes_title: "Learning Outcomes",
+            outcome1: "Design and deploy automated workflows with n8n.",
+            outcome2: "Use AI tools like OpenAI and LMStudio.",
+            outcome3: "Build internal AI agents using RAG.",
+            outcome4: "Automate onboarding, approvals, content creation.",
+            outcome5: "Understand AI budgeting, scalability, and planning.",
+            benefits_title: "Benefits to Your Organization",
+            benefit1: "Boost team productivity and efficiency.",
+            benefit2: "Reduce reliance on IT teams with no-code tools.",
+            benefit3: "Speed up customer and internal processes.",
+            benefit4: "Unify your systems and improve data flow.",
+            benefit5: "Drive real digital transformation.",
+            hear_from_participants: "Hear From Our Participants",
+            glimpses: "Glimpses from Our Workshops",
+            faq_main_title: "Frequently Asked Questions",
+            faq_cat1: "Track Record & Recognition",
+            faq_q1: "What's your training track record?",
+            faq_a1: "Our achievements speak for themselves: 10,000+ professionals trained, major corporate clients including Standard Chartered, Intel, and Shell.",
+            faq_q2: "What industry recognition do your trainers have?",
+            faq_a2: "Our trainers are recognized industry leaders with government advisory positions, university partnerships, and media appearances as AI experts.",
+            faq_cat2: "Prerequisites & Eligibility",
+            faq_q3: "Do I need any coding experience?",
+            faq_a3: "No programming experience is required for most courses, as they are specifically designed for non-coders.",
+            faq_cat3: "Registration & Logistics",
+            faq_q4: "How do I register?",
+            faq_a4: "Simply message us on WhatsApp, and we'll send you a registration form.",
+            faq_q5: "Is this course HRDC claimable?",
+            faq_a5: "Yes, this course is 100% HRDC claimable under the SBL-KHAS scheme.",
+            register_cta_title: "Register Now & Transform Your Business",
+            price_hrdc: "RM3,500 HRDC (+SST) / RM3,200 non-HRDC (+ SST)",
+            price_includes: "Includes training, certification, and 3 months of support."
+        },
+        cn: {
+            nav_dates: "日期",
+            nav_syllabus: "课程大纲",
+            nav_trainers: "讲师",
+            nav_faq: "常见问题",
+            nav_register: "立即报名",
+            hero_partnership: "与 WORQ 合作",
+            hero_title: "AI 自动化认证文凭班",
+            hero_subtitle: "在 2 天内掌握使用 n8n、OpenAI 和无代码工具的 AI 工作流自动化。可申请 HRDC。",
+            hero_book: "立即预订席位",
+            hero_brochure: "下载手册",
+            dates_title: "选择您的工作坊日期",
+            dates_subtitle: "席位有限！立即预订以确保留位。",
+            card_english: "英语",
+            card_mandarin: "中文",
+            card_book_now: "立即预订",
+            date_jan_15: "2026年1月15-16日",
+            day_thu_fri: "星期四 & 星期五",
+            sold_50: "已售出 50%",
+            filling_fast: "报名火热！",
+            date_jan_17: "2026年1月17-18日",
+            day_sat_sun: "星期六 & 星期日",
+            sold_30: "已售出 30%",
+            weekend_class: "周末班",
+            date_jan_22: "2026年1月22-23日",
+            new_date: "新增日期！",
+            date_feb_5: "2026年2月5-6日",
+            sold_10: "已售出 10%",
+            trusted_by: "深受行业领袖信赖",
+            loc_title: "地点与形式",
+            loc_format: "（线下实操培训）",
+            loc_ratio: "10:1 学员与导师比例",
+            support_title: "培训后支持",
+            support_desc: "3个月的专属支持，帮助您的团队落实 AI 应用。",
+            who_title: "谁应该参加",
+            who_desc: "本课程专为非技术专业人士量身定制，包括：",
+            who_list_1: "<strong>创始人、高管领导</strong>和决策者。",
+            who_list_2: "来自人力资源、市场营销、财务、运营和客户服务的<strong>经理</strong>。",
+            who_list_3: "主导数字化转型的<strong>顾问和专业人士</strong>。",
+            syllabus_title: "课程大纲概览",
+            day1_title: "第一天：基础与无代码自动化",
+            day1_item1: "<strong>AI 代理基础：</strong>深入了解大语言模型（LLMs）、记忆和工具等核心概念。",
+            day1_item2: "<strong>自动化策略：</strong>了解风险与收益的权衡，并确定业务中的高影响力机会。",
+            day1_item3: "<strong>高效提示词技巧：</strong>学习如何编写提示词，以便从 AI 获得精准的结果。",
+            day1_item4: "<strong>n8n 实操：</strong>从零开始构建您的第一个自动化工作流和功能性聊天机器人。",
+            day2_title: "第二天：部署与扩展",
+            day2_item1: "<strong>安全性：</strong>了解如何在本地运行以增强隐私和控制。",
+            day2_item2: "<strong>构建智能内部工具：</strong>使用检索增强生成（RAG）创建智能内部机器人。",
+            day2_item3: "<strong>实际部署：</strong>针对常见的业务任务实施六种可用于生产的自动化。",
+            day2_item4: "<strong>小组练习：</strong>使用专家提供的模板设计并构建您自己的 DIY 工作流。",
+            trainers_title: "专家讲师团队",
+            trainer1_name: "刘哲涵博士 (Dr. Lau Cher Han)",
+            trainer1_desc: "首席数据科学家、国家 AI 顾问，数据科学与自动化领域的专家培训师。",
+            trainer2_name: "Warren Leow",
+            trainer2_desc: "Supern8n 创始人、KAIN 联合创始人，MED4IRN 顾问，在跨行业扩展 AI 方面拥有丰富经验。",
+            trainer3_name: "Edmund Hee",
+            trainer3_desc: "Accio Technologies 首席技术官。曾任 CIMB AI 高管及 AirAsia 数据科学家。",
+            testimonials_title: "学员评价",
+            testimonial1: "“我们的人力资源和市场营销团队在培训后的一周内就自动化了几个工作流程。”",
+            testimonial2: "“清晰、实操性强且实用。我们立即在公司部署了实际用例。”",
+            testimonial3: "“课程后的3个月支持对我们的自动化推广至关重要。”",
+            cert_title: "我们的认证",
+            cert_subtitle: "十年卓越品质背书",
+            cert_desc: "我们的认证不仅仅是一纸证书；它是对我们超过10年高质量培训传统的见证。",
+            cert_list1: "<strong>行业认可：</strong>经十年成功的培训项目验证。",
+            cert_list2: "<strong>领袖信赖：</strong>我们的悠久历史赢得了顶级企业和政府机构的信任。",
+            cert_list3: "<strong>品质承诺：</strong>10年来不断完善课程，以符合最高标准。",
+            outcomes_title: "学习成果",
+            outcome1: "使用 n8n 设计和部署自动化工作流。",
+            outcome2: "使用 OpenAI 和 LMStudio 等 AI 工具。",
+            outcome3: "使用 RAG 构建内部 AI 代理。",
+            outcome4: "自动化入职、审批和内容创作流程。",
+            outcome5: "了解 AI 预算编制、可扩展性和规划。",
+            benefits_title: "对企业的益处",
+            benefit1: "提升团队生产力和效率。",
+            benefit2: "通过无代码工具减少对 IT 团队的依赖。",
+            benefit3: "加速客户服务和内部流程。",
+            benefit4: "统一系统并改善数据流。",
+            benefit5: "推动真正的数字化转型。",
+            hear_from_participants: "学员分享",
+            glimpses: "工作坊精彩瞬间",
+            faq_main_title: "常见问题解答",
+            faq_cat1: "过往记录与认可",
+            faq_q1: "你们的培训记录如何？",
+            faq_a1: "我们的成就说明了一切：培训了 10,000+ 名专业人士，客户包括渣打银行、英特尔和壳牌。",
+            faq_q2: "讲师有哪些行业认可？",
+            faq_a2: "我们的讲师是公认的行业领袖，担任政府顾问、大学合作伙伴，并作为 AI 专家在媒体上亮相。",
+            faq_cat2: "先决条件与资格",
+            faq_q3: "我需要编程经验吗？",
+            faq_a3: "大多数课程不需要编程经验，专门为非技术人员设计。",
+            faq_cat3: "报名与后勤",
+            faq_q4: "如何报名？",
+            faq_a4: "只需通过 WhatsApp 联系我们，我们将发送报名表给您。",
+            faq_q5: "此课程可以申请 HRDC 吗？",
+            faq_a5: "是的，本课程可通过 SBL-KHAS 计划申请 100% HRDC。",
+            register_cta_title: "立即注册，通过 AI 转型您的业务",
+            price_hrdc: "RM3,500 HRDC (+SST) / RM3,200 非 HRDC (+ SST)",
+            price_includes: "包含培训、认证及 3 个月的支持。"
+        }
+    };
+
+    let currentLang = localStorage.getItem('site_lang') || 'en';
+
+    function updateContent() {
+        const langData = translations[currentLang];
+        
+        // Update all elements with data-i18n attribute
+        document.querySelectorAll('[data-i18n]').forEach(element => {
+            const key = element.getAttribute('data-i18n');
+            if (langData[key]) {
+                // Using innerHTML to preserve bold tags etc.
+                element.innerHTML = langData[key];
+            }
+        });
+
+        // Update Toggle Text
+        const langText = document.getElementById('lang-text');
+        const langTextMobile = document.getElementById('lang-text-mobile');
+        if (langText) langText.textContent = currentLang === 'en' ? 'EN' : 'CN';
+        if (langTextMobile) langTextMobile.textContent = currentLang === 'en' ? 'EN' : 'CN';
+
+        // Update HTML lang attribute
+        document.documentElement.lang = currentLang;
+    }
+
+    function toggleLanguage() {
+        currentLang = currentLang === 'en' ? 'cn' : 'en';
+        localStorage.setItem('site_lang', currentLang);
+        updateContent();
+    }
+
+    // Wait for the DOM to be fully loaded before running scripts
+    document.addEventListener('DOMContentLoaded', function () {
+      // Initialize translations
+      updateContent();
+
+      // Initialize Lucide icons
+      lucide.createIcons();
+
+      // Mobile menu functionality
+      const mobileMenuButton = document.getElementById('mobile-menu-button');
+      const mobileMenu = document.getElementById('mobile-menu');
+      
+      if (mobileMenuButton && mobileMenu) {
+        const navLinks = mobileMenu.querySelectorAll('a');
+
+        mobileMenuButton.addEventListener('click', () => {
+          mobileMenu.classList.toggle('hidden');
+        });
+      
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+      }
+
+      // Accordion functionality
+      const accordionHeaders = document.querySelectorAll('.accordion-header');
+      accordionHeaders.forEach(header => {
+          header.addEventListener('click', () => {
+              const content = header.nextElementSibling;
+              // Lucide replaces the <i> tag with an <svg> tag, so we select the svg.
+              const icon = header.querySelector('svg');
+
+              // Safety check in case elements are not found
+              if (!content || !icon) return;
+
+              const isOpening = !content.style.maxHeight;
+
+              // Close all other open accordions before opening the new one
+              document.querySelectorAll('.accordion-content').forEach(item => {
+                  if (item !== content) {
+                      item.style.maxHeight = null;
+                      const otherIcon = item.previousElementSibling.querySelector('svg');
+                      if (otherIcon) {
+                        otherIcon.classList.remove('rotate-180');
+                      }
+                  }
+              });
+
+              // Toggle the clicked accordion
+              if (isOpening) {
+                  content.style.maxHeight = content.scrollHeight + "px";
+                  icon.classList.add('rotate-180');
+              } else {
+                  content.style.maxHeight = null;
+                  icon.classList.remove('rotate-180');
+              }
+          });
+      });
+    });
+  </script>
+
+</body>
+</html>
